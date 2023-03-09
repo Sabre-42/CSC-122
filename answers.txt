@@ -1,0 +1,32 @@
+
+
+Line 1: 3 5 4
+Calculater Perimeter (line 1): 16
+Calculated Rectangle Area (line 1): 15
+Calculated Circular Perimeter (line 1): 25.12
+Calculated Circular Area (line 1): 50.24
+
+Line 2: 12 14 11
+Calculater Perimeter: 52
+Calculated Rectangle Area: 168
+Calculated Circular Perimeter: 69.08
+Calculated Circular Area: 379.94
+
+Line 3: 8 56 23
+Calculater Perimeter: 128
+Calculated Rectangle Area: 448
+Calculated Circular Perimeter: 144.44
+Calculated Circular Area: 1661.06
+
+Line 4: 9 22 13
+Calculater Perimeter: 62
+Calculated Rectangle Area: 198
+Calculated Circular Perimeter: 81.64
+Calculated Circular Area: 530.66
+
+Line 5: 50 24 17
+Calculater Perimeter: 0
+Calculated Rectangle Area: 0
+Calculated Circular Perimeter: 106.76
+Calculated Circular Area: 907.46
+
