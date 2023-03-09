@@ -1,0 +1,330 @@
+#pragma once
+#include <string>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+class Shape
+{
+private:
+	
+protected:
+	double perimeter;
+	double area;
+
+public:
+	virtual double calcPerimeter(double, double);
+	virtual double calcArea(double, double);
+};
+
+class Rectangle : public Shape
+{
+private:
+	double length;
+	double width;
+public:
+	double calcPerimeter(double length, double width) override;
+	double calcArea(double length, double width) override;
+};
+
+class Circle : public Shape
+{
+private: 
+	double radius;
+	double const pi = 3.14;
+public: 
+	double calcArea(double radius, double pi) override;
+	double calcPerimeter(double radius, double pi) override;
+};
+
+
+#include "Shape.h"
+#include <cmath>
+#include <string>
+#include <iostream>
+#include <vector>
+#include <fstream>
+using namespace std;
+
+double Shape::calcPerimeter(double, double)
+{
+	return NULL;
+}
+
+double Shape::calcArea(double, double)
+{
+	return NULL;
+}
+
+double Rectangle::calcPerimeter(double length, double width)
+{
+	string r;
+
+	try
+	{
+		if (length == 50 || width == 50)
+		{
+			throw r;
+		}
+
+		perimeter = (2 * length) + (2 * width);
+		return perimeter;
+
+	}
+	catch (string r)
+	{
+		cout << "Not Permitted Data Detected" << endl;
+
+		perimeter = NULL;
+
+		return NULL;
+	}
+
+}
+
+
+double Rectangle::calcArea(double length, double width)
+{
+	string r;
+	
+	try
+	{
+		if (length == 50 || width == 50)
+		{
+			throw r;
+		
+		}
+
+		area = length * width;
+		return area;
+
+	}
+	catch (string r)
+	{
+		cout << "Not Permitted Data Detected" << endl;
+
+		area = NULL;
+
+		return NULL;
+	}
+	
+
+}
+
+double Circle::calcArea(double radius, double pi)
+{
+	string r;
+
+	try
+	{
+		if (radius == 50)
+			throw r;
+
+		area = pi * pow(radius, 2);
+		return area;
+	}
+	catch (string r)
+	{
+		cout << "Not Permitted Data Detected." << endl;
+		return NULL;
+	}
+
+}
+
+double Circle::calcPerimeter(double radius, double pi)
+{
+	string r;
+	try
+	{
+		if (radius == 50)
+			throw r;
+
+		perimeter = 2 * pi * radius;
+		return perimeter;
+
+	}
+	catch (string r)
+	{
+		cout << "Not Permitted Data Detected" << endl;
+		return NULL;
+	}
+}
+
+#include "Shape.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+using namespace std;
+
+
+int main()
+{
+	Shape s;
+	Rectangle r;
+	Circle c;
+	
+
+	ifstream ipFile("inputData.txt");
+	ofstream opFile("answers.txt");
+	
+	int i = 0;
+	double length;
+	double width;
+	double const pi = 3.14;
+	double radius;
+	// list of necessary varibles for definition/allocation
+
+	//reading data function
+	//Need to convert to solo method
+	vector<int> array;
+	if (ipFile.good())
+	{
+		int current_number = 0;
+		while (ipFile >> current_number)
+		{
+			array.push_back(current_number);
+		}
+
+		cout << "The numbers are: ";
+		for (int count = 0; count < array.size(); count++) 
+			cout << array[count] << " ";
+		
+	}
+	else
+	{
+		cout << "Error Opening File!" << endl;
+		cout << "Try Again" << endl;
+	}
+
+	opFile << "\n\n";
+
+	//for loop to define variables
+	for (i = 0; i < 1; i++)
+	{
+		length = array.at(i);
+		width = array.at(i + 1);
+		radius = array.at(i + 2);
+
+		cout << "\n" << "Length: " << length << " Width: " << width << " Radius: " << radius << endl;
+		//statement to check if vector is being read correctly. 
+		double perimeter = r.calcPerimeter(length, width);
+		double rArea = r.calcArea(length, width);
+		double cArea = c.calcArea(radius, pi);
+		double cPerimeter = c.calcPerimeter(radius, pi);
+
+	
+		//outputting to answers.txt
+		opFile << "Line 1: " << length << " " << width << " " << radius << endl;
+		opFile << "Calculater Perimeter (line 1): " << perimeter << endl;
+		opFile << "Calculated Rectangle Area (line 1): " << rArea << endl;
+		opFile << "Calculated Circular Perimeter (line 1): " << cPerimeter << endl;
+		opFile << "Calculated Circular Area (line 1): " << cArea << endl;
+	
+	}
+	 
+	opFile << "\n";
+
+	for (i = 3; i < 4; i++)
+	{
+		length = array.at(i);
+		width = array.at(i + 1);
+		radius = array.at(i + 2);
+
+		cout << "\n" << "Length: " << length << " Width: " << width << " Radius: " << radius << endl;
+		//statement to check if vector is being read correctly. 
+		double perimeter = r.calcPerimeter(length, width);
+		double rArea = r.calcArea(length, width);
+		double cArea = c.calcArea(radius, pi);
+		double cPerimeter = c.calcPerimeter(radius, pi);
+
+
+		//outputting to answers.txt
+		opFile << "Line 2: " << length << " " << width << " " << radius << endl;
+		opFile << "Calculater Perimeter: " << perimeter << endl;
+		opFile << "Calculated Rectangle Area: " << rArea << endl;
+		opFile << "Calculated Circular Perimeter: " << cPerimeter << endl;
+		opFile << "Calculated Circular Area: " << cArea << endl;
+	}
+
+	opFile << "\n";
+
+	for (i = 6; i < 7; i++)
+	{
+		length = array.at(i);
+		width = array.at(i + 1);
+		radius = array.at(i + 2);
+
+		cout << "\n" << "Length: " << length << " Width: " << width << " Radius: " << radius << endl;
+		//statement to check if vector is being read correctly. 
+		double perimeter = r.calcPerimeter(length, width);
+		double rArea = r.calcArea(length, width);
+		double cArea = c.calcArea(radius, pi);
+		double cPerimeter = c.calcPerimeter(radius, pi);
+
+
+		//outputting to answers.txt
+		opFile << "Line 3: " << length << " " << width << " " << radius << endl;
+		opFile << "Calculater Perimeter: " << perimeter << endl;
+		opFile << "Calculated Rectangle Area: " << rArea << endl;
+		opFile << "Calculated Circular Perimeter: " << cPerimeter << endl;
+		opFile << "Calculated Circular Area: " << cArea << endl;
+	}
+
+	opFile << "\n";
+
+	for (i = 9; i < 10; i++)
+	{
+		length = array.at(i);
+		width = array.at(i + 1);
+		radius = array.at(i + 2);
+
+		cout << "\n" << "Length: " << length << " Width: " << width << " Radius: " << radius << endl;
+		//statement to check if vector is being read correctly. 
+		double perimeter = r.calcPerimeter(length, width);
+		double rArea = r.calcArea(length, width);
+		double cArea = c.calcArea(radius, pi);
+		double cPerimeter = c.calcPerimeter(radius, pi);
+
+
+		//outputting to answers.txt
+		opFile << "Line 4: " << length << " " << width << " " << radius << endl;
+		opFile << "Calculater Perimeter: " << perimeter << endl;
+		opFile << "Calculated Rectangle Area: " << rArea << endl;
+		opFile << "Calculated Circular Perimeter: " << cPerimeter << endl;
+		opFile << "Calculated Circular Area: " << cArea << endl;
+	}
+
+	opFile << "\n";
+
+	for (i = 12; i < 13; i++)
+	{
+		length = array.at(i);
+		width = array.at(i + 1);
+		radius = array.at(i + 2);
+
+		cout << "\n" << "Length: " << length << " Width: " << width << " Radius: " << radius << endl;
+		//statement to check if vector is being read correctly. 
+		double perimeter = r.calcPerimeter(length, width);
+		double rArea = r.calcArea(length, width);
+		double cArea = c.calcArea(radius, pi);
+		double cPerimeter = c.calcPerimeter(radius, pi);
+
+
+		//outputting to answers.txt
+		opFile << "Line 5: " << length << " " << width << " " << radius << endl;
+		opFile << "Calculater Perimeter: " << perimeter << endl;
+		opFile << "Calculated Rectangle Area: " << rArea << endl;
+		opFile << "Calculated Circular Perimeter: " << cPerimeter << endl;
+		opFile << "Calculated Circular Area: " << cArea << endl;
+	}
+
+	opFile << "\n";
+
+	//Running all necessary formulas
+
+	
+	ipFile.close();
+	opFile.close();
+	return 0;
+}
